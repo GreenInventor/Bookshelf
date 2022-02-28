@@ -257,4 +257,12 @@ public class Book
 	{
 		this.genre = genre;
 	}
+
+	@Override
+	public String toString() 
+	{
+		return "Book [bookid=" + bookid + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publisher="
+				+ publisher + ", numOfPages=" + numOfPages + ", numOfChapters=" + numOfChapters + ", isSeries="
+				+ isSeries + ", genre=" + genre + "]";
+	}
 }

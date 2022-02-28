@@ -16,7 +16,7 @@ import model.Book;
  */
 public class BookHelper 
 {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("BookList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("BookshelfPatersonPohlman");
 	
 	public void insertBook(Book b)
 	{
