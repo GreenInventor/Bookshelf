@@ -19,7 +19,7 @@ public class Book
 	@Id
 	@GeneratedValue
 	@Column(name="BOOKID")
-	private int bookId;
+	private int bookid;
 	
 	@Column(name="TITLE")
 	private String title;
@@ -101,7 +101,7 @@ public class Book
 			int numOfChapters, boolean isSeries, String genre) 
 	{
 		super();
-		this.bookId = bookId;
+		this.bookid = bookId;
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
@@ -119,7 +119,7 @@ public class Book
 	 */
 	public int getBookId() 
 	{
-		return bookId;
+		return bookid;
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class Book
 	 */
 	public void setBookId(int bookId) 
 	{
-		this.bookId = bookId;
+		this.bookid = bookId;
 	}
 
 	/**
