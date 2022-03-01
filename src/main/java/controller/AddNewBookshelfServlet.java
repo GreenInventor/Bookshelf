@@ -8,18 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ViewAllBooksServlet
+ * Servlet implementation class AddNewBookshelfServlet
  */
-@WebServlet("/viewAllBooksServlet")
-public class ViewAllBooksServlet extends HttpServlet 
-{
+@WebServlet("/addNewBookshelfServlet")
+public class AddNewBookshelfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllBooksServlet() 
-    {
+    public AddNewBookshelfServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,18 +25,16 @@ public class ViewAllBooksServlet extends HttpServlet
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		BookHelper bh = new BookHelper();
 		
 		request.setAttribute("allBooks", bh.showAllBooks());
 		
-		String path = "/booklist.jsp";
+		String path = "/new-bookshelf.jsp";
 		
-		if(bh.showAllBooks().isEmpty())
-		{
+		if(bh.showAllBooks().isEmpty()) {
 			path = "/addbook.html";
-			System.out.println("bh.showAllBooks() is empty");
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);
@@ -47,8 +43,7 @@ public class ViewAllBooksServlet extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
