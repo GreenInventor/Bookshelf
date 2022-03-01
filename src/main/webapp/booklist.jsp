@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Book List:</h1>
-	<form method="post" action="navigationServlet">
+	<form method="post" action="bookNavigationServlet">
 	<table>
 		<c:forEach items="${requestScope.allBooks}" var="currentBook">
 		<tr>

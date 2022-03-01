@@ -12,7 +12,7 @@ import model.Book;
 /**
  * Servlet implementation class AddBookServlet
  */
-@WebServlet("/AddBookServlet")
+@WebServlet("/addBookServlet")
 public class AddBookServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
