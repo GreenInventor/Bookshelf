@@ -44,7 +44,7 @@ public class BookHelper
 				Book.class);
 		
 		//Substitute parameter with actual data from the toDelete item
-		typedQuery.setParameter("selectedId", toDelete.getBookId());
+		typedQuery.setParameter("selectedId", toDelete.getId());
 		
 		//We only want one result
 		typedQuery.setMaxResults(1);

@@ -18,8 +18,8 @@ public class Book
 {
 	@Id
 	@GeneratedValue
-	@Column(name="BOOKID")
-	private int bookid;
+	@Column(name="ID")
+	private int id;
 	
 	@Column(name="TITLE")
 	private String title;
@@ -85,49 +85,63 @@ public class Book
 
 
 
-	/**
-	 * constructor using all parameters
-	 * @param bookId
-	 * @param title
-	 * @param author
-	 * @param isbn
-	 * @param publisher
-	 * @param numOfPages
-	 * @param numOfChapters
-	 * @param isSeries
-	 * @param genre
-	 */
-	public Book(int bookId, String title, String author, String isbn, String publisher, int numOfPages,
-			int numOfChapters, boolean isSeries, String genre) 
-	{
-		super();
-		this.bookid = bookId;
-		this.title = title;
-		this.author = author;
-		this.isbn = isbn;
-		this.publisher = publisher;
-		this.numOfPages = numOfPages;
-		this.numOfChapters = numOfChapters;
-		this.isSeries = isSeries;
-		this.genre = genre;
-	}
+//	/**
+//	 * constructor using all parameters
+//	 * @param bookId
+//	 * @param title
+//	 * @param author
+//	 * @param isbn
+//	 * @param publisher
+//	 * @param numOfPages
+//	 * @param numOfChapters
+//	 * @param isSeries
+//	 * @param genre
+//	 */
+//	public Book(int bookId, String title, String author, String isbn, String publisher, int numOfPages,
+//			int numOfChapters, boolean isSeries, String genre) 
+//	{
+//		super();
+//		this.id = bookId;
+//		this.title = title;
+//		this.author = author;
+//		this.isbn = isbn;
+//		this.publisher = publisher;
+//		this.numOfPages = numOfPages;
+//		this.numOfChapters = numOfChapters;
+//		this.isSeries = isSeries;
+//		this.genre = genre;
+//	}
 
 	//Getters and Setters \/
 	
+//	/**
+//	 * @return the bookId
+//	 */
+//	public int getBookId() 
+//	{
+//		return bookid;
+//	}
+//
+//	/**
+//	 * @param bookId the bookId to set
+//	 */
+//	public void setBookId(int bookId) 
+//	{
+//		this.bookid = bookId;
+//	}
+
 	/**
-	 * @return the bookId
+	 * @return the id
 	 */
-	public int getBookId() 
-	{
-		return bookid;
+	public int getId() {
+		return id;
 	}
 
 	/**
-	 * @param bookId the bookId to set
+	 * @param id the id to set
 	 */
-	public void setBookId(int bookId) 
-	{
-		this.bookid = bookId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -229,7 +243,7 @@ public class Book
 	/**
 	 * @return the isSeries
 	 */
-	public boolean isSeries() 
+	public boolean getIsSeries() 
 	{
 		return isSeries;
 	}
@@ -261,7 +275,7 @@ public class Book
 	@Override
 	public String toString() 
 	{
-		return "Book [bookid=" + bookid + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publisher="
+		return "Book [bookid=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publisher="
 				+ publisher + ", numOfPages=" + numOfPages + ", numOfChapters=" + numOfChapters + ", isSeries="
 				+ isSeries + ", genre=" + genre + "]";
 	}
