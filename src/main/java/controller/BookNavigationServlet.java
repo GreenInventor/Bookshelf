@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Book;
+
 /**
  * Servlet implementation class BookNavigationServlet
  */
@@ -49,11 +51,24 @@ public class BookNavigationServlet extends HttpServlet
 		}
 		else if(act.equals("Edit Book"))
 		{
-			System.out.println("Not implemented yet"); //TODO
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Book bookToEdit = bh.searchForBookById(tempId);
+				request.setAttribute("bookToEdit", bookToEdit);
+				path="/edit-book.jsp";
+			}catch(NumberFormatException e) {
+				System.out.println("No Book Selected");
+			}
 		}
 		else if(act.equals("Delete Book"))
 		{
-			System.out.println("Not implemented yet"); //TODO
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Book bookToDelete = bh.searchForBookById(tempId);
+				bh.deleteBook(bookToDelete);
+			}catch(NumberFormatException e) {
+				System.out.println("No Book Selected");
+			}
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);

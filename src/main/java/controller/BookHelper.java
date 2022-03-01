@@ -40,7 +40,7 @@ public class BookHelper
 	{
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Book> typedQuery = em.createQuery("select b from Book b where b.bookid = :selectedId",
+		TypedQuery<Book> typedQuery = em.createQuery("select b from Book b where b.id = :selectedId",
 				Book.class);
 		
 		//Substitute parameter with actual data from the toDelete item
