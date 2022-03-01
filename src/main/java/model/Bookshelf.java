@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 /**
  * Tanner Patterson and Chris Pohlman
  * CIS175 Java II - SPRING
@@ -24,10 +26,11 @@ public class Bookshelf
 	
 	private String name;
 	
-	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "bookshelf", cascade= {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH}, fetch=FetchType.EAGER, orphanRemoval = true)
+	@CascadeOnDelete
 	private List<Book> books;
 
-	//Constructors \/
+	//Constructors
 	
 	/**
 	 * default constructor
