@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -44,9 +45,26 @@ public class Book
 	
 	@Column(name="GENRE")
 	private String genre;
+	
+	@JoinColumn(name="BOOKSHELF")
+	private Bookshelf bookshelf;
 
 	//Constructors \/
 	
+	/**
+	 * @return the bookshelf
+	 */
+	public Bookshelf getBookshelf() {
+		return bookshelf;
+	}
+
+	/**
+	 * @param bookshelf the bookshelf to set
+	 */
+	public void setBookshelf(Bookshelf bookshelf) {
+		this.bookshelf = bookshelf;
+	}
+
 	/**
 	 * default constructor
 	 */
