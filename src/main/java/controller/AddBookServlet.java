@@ -53,6 +53,7 @@ public class AddBookServlet extends HttpServlet
 		BookHelper bh = new BookHelper();
 		bh.insertBook(toAdd);
 		
+		
 		getServletContext().getRequestDispatcher("/addbook.html").forward(request, response);
 	}
 

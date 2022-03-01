@@ -13,7 +13,7 @@
 	<table>
 		<c:forEach items="${requestScope.allBooks}" var="currentBook">
 		<tr>
-			<td><input type="radio" name="id" value="${currentBook.bookid}"></td>
+			<td><input type="radio" name="id" value="${currentBook.id}"></td>
 			<td>${currentBook.title}</td>
 			<td>${currentBook.author}</td>
 			<td>${currentBook.isbn}</td>
