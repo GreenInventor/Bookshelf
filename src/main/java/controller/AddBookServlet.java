@@ -7,18 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Book;
+
 /**
- * Servlet implementation class BookNavigationServlet
+ * Servlet implementation class AddBookServlet
  */
-@WebServlet("/bookNavigationServlet")
-public class BookNavigationServlet extends HttpServlet 
+@WebServlet("/AddBookServlet")
+public class AddBookServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookNavigationServlet() 
+    public AddBookServlet() 
     {
         super();
         // TODO Auto-generated constructor stub
@@ -38,25 +40,20 @@ public class BookNavigationServlet extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String isbn = request.getParameter("isbn");
+		String publisher = request.getParameter("publisher");
+		int numOfPages = Integer.parseInt(request.getParameter("numOfPages"));
+		int numOfChapters = Integer.parseInt(request.getParameter("numOfChapters"));
+		boolean isSeries = Boolean.parseBoolean(request.getParameter("isSeries"));
+		String genre = request.getParameter("genre");
+		
+		Book toAdd = new Book(title, author, isbn, publisher, numOfPages, numOfChapters, isSeries, genre);
 		BookHelper bh = new BookHelper();
-		String act = request.getParameter("doThisToBook");
+		bh.insertBook(toAdd);
 		
-		String path = "/viewAllBooksServlet";
-		
-		if(act.equals("Add Book"))
-		{
-			path = "/addbook.html";
-		}
-		else if(act.equals("Edit Book"))
-		{
-			System.out.println("Not implemented yet"); //TODO
-		}
-		else if(act.equals("Delete Book"))
-		{
-			System.out.println("Not implemented yet"); //TODO
-		}
-		
-		getServletContext().getRequestDispatcher(path).forward(request, response);
+		getServletContext().getRequestDispatcher("/addbook.html").forward(request, response);
 	}
 
 }
