@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Book;
+import model.Bookshelf;
 
 /**
  * Servlet implementation class BookNavigationServlet
@@ -51,22 +54,62 @@ public class BookNavigationServlet extends HttpServlet
 		}
 		else if(act.equals("Edit Book"))
 		{
-			try {
+			try 
+			{
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				Book bookToEdit = bh.searchForBookById(tempId);
 				request.setAttribute("bookToEdit", bookToEdit);
 				path="/edit-book.jsp";
-			}catch(NumberFormatException e) {
+			}
+			catch(NumberFormatException e) 
+			{
 				System.out.println("No Book Selected");
 			}
 		}
 		else if(act.equals("Delete Book"))
 		{
-			try {
+			try 
+			{
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Book bookToDelete = bh.searchForBookById(tempId);
-				bh.deleteBook(bookToDelete);
-			}catch(NumberFormatException e) {
+				Book bookToDelete = bh.searchForBookById(tempId); //delete book from bookshelves first
+				Book toRemove = null;
+				boolean found = false;
+				boolean inBookshelf = false;
+
+				BookShelfHelper bsh = new BookShelfHelper(); 
+				List<Bookshelf> shelves = bsh.getBookshelves(); //get all bookshelves
+				
+				for(Bookshelf bs : shelves) //search all bookshelves for the book
+				{
+					System.out.println("Searching " + bs.getName() + " for " + bookToDelete.getTitle());
+					List<Book> bsbooks = bs.getBooks();
+					for(Book b : bsbooks)
+					{
+						if(b.getId() == bookToDelete.getId())
+						{
+							System.out.println(bookToDelete.getTitle() + " found in " + bs.getName());
+							bookToDelete = b;
+							found = true;
+							inBookshelf = true;
+							break;
+						}
+					}
+					if(found)
+					{
+						bsbooks.remove(bookToDelete); //if the book is found in the bookshelf, remove it
+						bs.setBooks(bsbooks);
+						bsh.updateBookshelf(bs);
+						found = false;
+					}
+					
+				}
+				if(!inBookshelf)
+				{
+					bh.deleteBook(bookToDelete); //if book wasn't in any bookshelves, remove it from book list
+				}
+			}
+			catch(NumberFormatException e) 
+			{
 				System.out.println("No Book Selected");
 			}
 		}

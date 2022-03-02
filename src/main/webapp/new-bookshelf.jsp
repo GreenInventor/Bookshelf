@@ -12,7 +12,7 @@
 		Bookshelf Name: <input type="text" name="name">
 		Available Books: <select name="allBooksToAdd" multiple size="5">
 			<c:forEach items="${requestScope.allBooks}" var = "currentBook">
-				<option value="${currentBook.id}">${currentBook.title} by {currentBook.author}</option>
+				<option value="${currentBook.id}">${currentBook.title} by ${currentBook.author}</option>
 			</c:forEach>
 		</select>
 		<input type="submit" value="Create Bookshelf">

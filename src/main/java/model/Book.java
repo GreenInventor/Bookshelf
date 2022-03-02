@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
- * Tanner Patterson and Chris Pohlman
+ * @author Tanner Patterson and Chris Pohlman
  * CIS175 Java II - SPRING
  * Feb 28, 2022
  */
