@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Add Book</title>
+	<title>Add Book</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="style.css" rel="stylesheet">
+	<!-- Tanner Patterson and Chris Pohlman -->
 </head>
 <body>
-	<h1>Add Book:</h1>
-	<form action="addBookServlet" method="post">
-		<p>Title: <input type="text" name="title"></p>
-		<p>Author: <input type="text" name="author"></p>
-		<p>ISBN: <input type="text" name="isbn"></p>
-		<p>Publisher: <input type="text" name="publisher"></p>
-		<p>Pages: <input type="number" name="numOfPages"></p>
-		<p>Chapters: <input type="number" name="numOfChapters"></p>
-		<p>Is Series: <input type="checkbox" name="isSeries"></p>
-		<p>Genre: <input type="text" name="genre"></p>
-		<input type="submit" value="Add Book">
-		<input type="reset" value="Reset">
-	</form><br>
-	<a href="viewAllBooksServlet">View All Books</a>
+	<div id="container">
+		<header id="top">
+			<h1>Add Book</h1>
+		</header>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="viewAllBooksServlet">View all Books</a>
+			<a href="viewAllBookshelvesServlet">View all Bookshelves</a>
+		</nav>
+		<section>
+			<form action="addBookServlet" method="post">
+				<p>Title: <input type="text" name="title"></p>
+				<p>Author: <input type="text" name="author"></p>
+				<p>ISBN: <input type="text" name="isbn"></p>
+				<p>Publisher: <input type="text" name="publisher"></p>
+				<p>Pages: <input type="number" name="numOfPages"></p>
+				<p>Chapters: <input type="number" name="numOfChapters"></p>
+				<p>Is Series: <input type="checkbox" name="isSeries"></p>
+				<p>Genre: <input type="text" name="genre"></p><br>
+				<hr>
+				<br>
+				<input type="submit" value="Add Book">
+				<input type="reset" value="Reset">
+			</form>
+		</section>
+		<footer>
+			<p>Java II Partner Project Week 6-7. Tanner Patterson and Chris Pohlman.</p>
+		</footer>
+	</div>
 </body>
 </html>

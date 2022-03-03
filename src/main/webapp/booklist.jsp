@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>View All Books</title>
+	<title>All Books</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
 	<div id="container">
 		<header id="top">
-			<h1>Book List</h1>
+			<h1>All Books</h1>
 		</header>
 		<nav>
 			<a href="index.html">Home</a>

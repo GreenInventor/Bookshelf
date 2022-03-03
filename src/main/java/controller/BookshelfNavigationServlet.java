@@ -42,29 +42,13 @@ public class BookshelfNavigationServlet extends HttpServlet
 	{
 		BookShelfHelper bsh = new BookShelfHelper();
 		String act = request.getParameter("doThisToBookshelf");
+		String path = "/viewAllBookshelvesServlet";
 		
-		if(act==null) 
+		if(act.equals("Add Bookshelf")) 
 		{
-			getServletContext().getRequestDispatcher("/viewAllBookshelvesServlet").forward(request, response);
+			path = "/addNewBookshelfServlet";
 		}
-		else if(act.equals("delete")) 
-		{
-			try 
-			{
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Bookshelf toDelete = bsh.getBookshelfById(tempId);
-				bsh.deleteBookshelf(toDelete);
-			}
-			catch(NumberFormatException e) 
-			{
-				System.out.println("No bookshelf selected");
-			}
-			finally 
-			{
-				getServletContext().getRequestDispatcher("/viewAllBookshelvesServlet").forward(request, response);
-			}
-		}
-		else if(act.equals("edit"))
+		else if(act.equals("Edit Bookshelf"))
 		{
 			try
 			{
@@ -80,17 +64,27 @@ public class BookshelfNavigationServlet extends HttpServlet
 					request.setAttribute("allBooks", " ");
 					System.out.println("No books found!");
 				}
-				getServletContext().getRequestDispatcher("/edit-bookshelf.jsp").forward(request, response);
+				path = "/edit-bookshelf.jsp";
 			}
 			catch(NumberFormatException e)
 			{
-				getServletContext().getRequestDispatcher("/viewAllBookshelvesServlet").forward(request, response);
+				System.out.println("No bookshelf selected");
 			}
 		}
-		else if(act.equals("add")) 
+		else if(act.equals("Delete Bookshelf")) 
 		{
-			getServletContext().getRequestDispatcher("/addNewBookshelfServlet").forward(request, response);
+			try 
+			{
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Bookshelf toDelete = bsh.getBookshelfById(tempId);
+				bsh.deleteBookshelf(toDelete);
+			}
+			catch(NumberFormatException e) 
+			{
+				System.out.println("No bookshelf selected");
+			}
 		}
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 }
