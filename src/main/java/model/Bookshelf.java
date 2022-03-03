@@ -26,7 +26,7 @@ public class Bookshelf
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "bookshelf", cascade= {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH}, fetch=FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "bookshelf", cascade= {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH}, fetch=FetchType.EAGER, orphanRemoval = false)
 	@CascadeOnDelete
 	private List<Book> books;
 

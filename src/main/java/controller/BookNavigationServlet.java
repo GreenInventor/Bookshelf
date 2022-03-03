@@ -74,7 +74,6 @@ public class BookNavigationServlet extends HttpServlet
 				Book bookToDelete = bh.searchForBookById(tempId); //delete book from bookshelves first
 				Book toRemove = null;
 				boolean found = false;
-				boolean inBookshelf = false;
 
 				BookShelfHelper bsh = new BookShelfHelper(); 
 				List<Bookshelf> shelves = bsh.getBookshelves(); //get all bookshelves
@@ -88,25 +87,21 @@ public class BookNavigationServlet extends HttpServlet
 						if(b.getId() == bookToDelete.getId())
 						{
 							System.out.println(bookToDelete.getTitle() + " found in " + bs.getName());
-							bookToDelete = b;
+							toRemove = b;
 							found = true;
-							inBookshelf = true;
 							break;
 						}
 					}
 					if(found)
 					{
-						bsbooks.remove(bookToDelete); //if the book is found in the bookshelf, remove it
+						bsbooks.remove(toRemove); //if the book is found in the bookshelf, remove it
 						bs.setBooks(bsbooks);
 						bsh.updateBookshelf(bs);
 						found = false;
 					}
 					
 				}
-				if(!inBookshelf)
-				{
-					bh.deleteBook(bookToDelete); //if book wasn't in any bookshelves, remove it from book list
-				}
+				bh.deleteBook(bookToDelete); //if book wasn't in any bookshelves, remove it from book list
 			}
 			catch(NumberFormatException e) 
 			{
