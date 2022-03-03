@@ -23,14 +23,14 @@
 		</nav>
 		<section>
 			<form action="editBookServlet" method="post">
-				<p>Title: <input type="text" name="title" value="${bookToEdit.title}"></p>
-				<p>Author: <input type="text" name="author" value="${bookToEdit.author}"></p>
-				<p>ISBN: <input type="text" name="isbn" value="${bookToEdit.isbn}"></p>
-				<p>Publisher: <input type="text" name="publisher" value="${bookToEdit.publisher}"></p>
-				<p>Pages: <input type="number" name="numOfPages" value="${bookToEdit.numOfPages}"></p>
-				<p>Chapters: <input type="number" name="numOfChapters" value="${bookToEdit.numOfChapters}"></p>
+				<p>Title:</p><input type="text" name="title" value="${bookToEdit.title}">
+				<p>Author:</p><input type="text" name="author" value="${bookToEdit.author}">
+				<p>ISBN:</p><input type="text" name="isbn" value="${bookToEdit.isbn}">
+				<p>Publisher:</p><input type="text" name="publisher" value="${bookToEdit.publisher}">
+				<p>Pages:</p><input type="number" name="numOfPages" value="${bookToEdit.numOfPages}">
+				<p>Chapters:</p><input type="number" name="numOfChapters" value="${bookToEdit.numOfChapters}">
 				<p>Is Series: <input type="checkbox" name="isSeries" value="${bookToEdit.isSeries}"></p>
-				<p>Genre: <input type="text" name="genre" value="${bookToEdit.genre}"></p>
+				<p>Genre:</p><input type="text" name="genre" value="${bookToEdit.genre}">
 				<input type="hidden" name="id" value="${bookToEdit.id}"><br>
 				<hr>
 				<br>

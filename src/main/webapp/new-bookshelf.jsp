@@ -22,8 +22,9 @@
 		</nav>
 		<section>
 			<form action="createNewBookshelfServlet" method="post">
-				<p>Bookshelf Name: <input type="text" name="name"></p>
-				<p>Available Books:</p><select name="allBooksToAdd" multiple size="5">
+				<p>Bookshelf Name:</p><input type="text" name="name"><br>
+				<p>Available Books:</p>
+				<select name="allBooksToAdd" multiple size="5">
 					<c:forEach items="${requestScope.allBooks}" var = "currentBook">
 						<option value="${currentBook.id}">${currentBook.title} by ${currentBook.author}</option>
 					</c:forEach>
