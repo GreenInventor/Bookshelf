@@ -13,13 +13,15 @@ import model.Bookshelf;
  * Servlet implementation class BookshelfNavigationServlet
  */
 @WebServlet("/bookshelfnavigationservlet")
-public class BookshelfNavigationServlet extends HttpServlet {
+public class BookshelfNavigationServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookshelfNavigationServlet() {
+    public BookshelfNavigationServlet() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +29,8 @@ public class BookshelfNavigationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -35,26 +38,53 @@ public class BookshelfNavigationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		BookShelfHelper bsh = new BookShelfHelper();
 		String act = request.getParameter("doThisToBookshelf");
+		String path = "/viewAllBookshelvesServlet";
 		
-		if(act==null) {
-			getServletContext().getRequestDispatcher("/viewAllBookshelvesServlet").forward(request, response);
-		}else if(act.equals("delete")) {
-			try {
+		if(act.equals("Add Bookshelf")) 
+		{
+			path = "/addNewBookshelfServlet";
+		}
+		else if(act.equals("Edit Bookshelf"))
+		{
+			try
+			{
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Bookshelf bookshelfToEdit = bsh.getBookshelfById(tempId);
+				request.setAttribute("bookshelfToEdit", bookshelfToEdit);
+				
+				BookHelper bh = new BookHelper();
+				request.setAttribute("allBooks", bh.showAllBooks());
+				
+				if(bsh.getBookshelves().isEmpty())
+				{
+					request.setAttribute("allBooks", " ");
+					System.out.println("No books found!");
+				}
+				path = "/edit-bookshelf.jsp";
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("No bookshelf selected");
+			}
+		}
+		else if(act.equals("Delete Bookshelf")) 
+		{
+			try 
+			{
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				Bookshelf toDelete = bsh.getBookshelfById(tempId);
 				bsh.deleteBookshelf(toDelete);
-			}catch(NumberFormatException e) {
-				System.out.println("No bookshelf selected");
-			}finally {
-				getServletContext().getRequestDispatcher("/viewAllBookshelvesServlet").forward(request, response);
 			}
-		}else if(act.equals("add")) {
-			getServletContext().getRequestDispatcher("/addNewBookshelfServlet").forward(request, response);
+			catch(NumberFormatException e) 
+			{
+				System.out.println("No bookshelf selected");
+			}
 		}
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 }

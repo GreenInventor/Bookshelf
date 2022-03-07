@@ -36,6 +36,7 @@ footer {
     padding: 10px;
     border-bottom-left-radius: 24px;
 	border-bottom-right-radius: 24px;
+	border-top: 2px solid black;
 }
 
 nav {
@@ -73,12 +74,18 @@ nav a:hover, nav a:focus {
     text-align: center;
 }
 
+#bordertop {
+	border-top: 2px solid black;
+	margin-top: 20px;
+	padding-top: 5px;
+}
+
 form {		
 	display: flex;
 	flex-direction: column; 
 	background-color:white;
 	width:90%;
-	padding:0.5em;
+	padding: 20px;
 	margin:1.5em auto;
 	border:2px solid black;
 	border-radius:10px;

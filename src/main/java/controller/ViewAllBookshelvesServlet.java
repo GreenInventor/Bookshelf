@@ -15,13 +15,15 @@ import model.Bookshelf;
  * Servlet implementation class ViewAllBookshelvesServlet
  */
 @WebServlet("/viewAllBookshelvesServlet")
-public class ViewAllBookshelvesServlet extends HttpServlet {
+public class ViewAllBookshelvesServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllBookshelvesServlet() {
+    public ViewAllBookshelvesServlet() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +31,8 @@ public class ViewAllBookshelvesServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		BookShelfHelper bsh = new BookShelfHelper();
 		List<Bookshelf> shelves = bsh.getBookshelves();
@@ -37,8 +40,9 @@ public class ViewAllBookshelvesServlet extends HttpServlet {
 		request.setAttribute("allBookshelves", shelves);
 		String path = "/bookshelf-list.jsp";
 		
-		if(shelves.isEmpty()) {
-			path = "/new-bookshelf.jsp";
+		if(shelves.isEmpty()) 
+		{
+			path = "/addNewBookshelfServlet";
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);
@@ -47,7 +51,8 @@ public class ViewAllBookshelvesServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

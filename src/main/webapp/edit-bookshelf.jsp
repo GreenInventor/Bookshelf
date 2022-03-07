@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add New Bookshelf</title>
+	<title>Edit Bookshelf</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
 	<div id="container">
 		<header id="top">
-			<h1>Add New Bookshelf</h1>
+			<h1>Edit Bookshelf</h1>
 		</header>
 		<nav>
 			<a href="index.html">Home</a>
@@ -21,17 +21,18 @@
 			<a href="viewAllBookshelvesServlet">View all Bookshelves</a>
 		</nav>
 		<section>
-			<form action="createNewBookshelfServlet" method="post">
-				<p>Bookshelf Name:</p><input type="text" name="name"><br>
+			<form action="editBookshelfServlet" method="post">
+				<input type="hidden" name="id" value="${bookshelfToEdit.bookShelfId}">
+				<p>Bookshelf Name:</p><input type="text" name="bookshelfName" value="${bookshelfToEdit.name}"><br>
 				<p>Available Books:</p>
-				<select name="allBooksToAdd" multiple size="5">
-					<c:forEach items="${requestScope.allBooks}" var = "currentBook">
-						<option value="${currentBook.id}">${currentBook.title} by ${currentBook.author}</option>
-					</c:forEach>
+				<select name="booksToAdd" multiple size="5">
+				<c:forEach items="${requestScope.allBooks}" var = "currentBook">
+					<option value="${currentBook.id}">${currentBook.title} by ${currentBook.author}</option>
+				</c:forEach>
 				</select><br>
 				<hr>
 				<br>
-				<input type="submit" value="Create Bookshelf">
+				<input type="submit" value="Edit Bookshelf and Add Books">
 				<input type="reset" value="Reset">
 			</form>
 		</section>
