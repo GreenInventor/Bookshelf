@@ -46,10 +46,13 @@ public class AddBookServlet extends HttpServlet
 		String publisher = request.getParameter("publisher");
 		int numOfPages = Integer.parseInt(request.getParameter("numOfPages"));
 		int numOfChapters = Integer.parseInt(request.getParameter("numOfChapters"));
-		boolean isSeries = request.getParameter("isSeries").equals("on");
+		boolean isSeries = false;
+		try {
+			isSeries = request.getParameter("isSeries").equals("on");
+		}catch(Exception e) {
+			System.out.println("isSeries not checked");
+		}
 		
-		System.out.println(isSeries);
-		System.out.println(request.getParameter("true"));
 		String genre = request.getParameter("genre");
 		
 		Book toAdd = new Book(title, author, isbn, publisher, numOfPages, numOfChapters, isSeries, genre);

@@ -69,4 +69,9 @@ public class BookShelfHelper
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public void cleanUp()
+	{
+		emfactory.close();
+	}
 }

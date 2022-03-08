@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Book;
 import model.Bookshelf;
 
 /**
@@ -38,6 +39,10 @@ public class ViewAllBookshelvesServlet extends HttpServlet
 		List<Bookshelf> shelves = bsh.getBookshelves();
 		
 		request.setAttribute("allBookshelves", shelves);
+		for(Bookshelf shelf : shelves) {
+			List<Book> books = shelf.getBooks();
+			request.setAttribute("bookList", books);
+		}
 		String path = "/bookshelf-list.jsp";
 		
 		if(shelves.isEmpty()) 

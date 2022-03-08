@@ -28,7 +28,7 @@
 					<td><input type = "radio" name="id" value="${currentBookshelf.bookShelfId}"></td>
 					<td><h2>${currentBookshelf.name}</h2></td>
 				</tr>
-				<c:forEach items = "${currentBookshelf.books}" var = "currentBook">
+				<c:forEach items = "${requestScope.bookList}" var = "currentBook">
 					<tr>
 						<td><p>Title: ${currentBook.title}</p></td>
 						<td><p>| Author: ${currentBook.author}</p></td>
